@@ -9,7 +9,7 @@ export class ViolationEntity {
   id: number;
 
   @Column()
-  name: string;
+  civilId: string;
 
   @Column({ default: AlcoholicLevelEnum.ZERO })
   alcoholicLevel: number;
@@ -23,6 +23,6 @@ export class ViolationEntity {
   @Column({ default: StatusEnum.PENDING })
   status: string;
 
-  @Column()
+  @Column({ nullable: true })
   created?: string;
 }

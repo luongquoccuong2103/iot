@@ -1,25 +1,14 @@
 ### Create a new user
-POST http://localhost:3000/auth/signup
+POST http://localhost:3000/violation/create
 content-type: application/json
 
 {
-  "email": "asdf@asdf.com",
-  "password": "asdlfkajsd"
+  "civilId": "123456789",
+  "alcoholicLevel": 21,
+  "transportationMean": 2,
+  "fineAmount": 100000,
+  "created": "123"
 }
 
-### Find a particular user with a given ID
-GET http://localhost:3000/auth/1
-
-### Find all users with a given email
-GET http://localhost:3000/auth?email=asdf@asdf.com
-
-### Delete a user given id
-DELETE http://localhost:3000/auth/1
-
-### Update a user
-PATCH http://localhost:3000/auth/2
-content-type: application/json
-
-{
-  "password": "aaaaa"
-}
+### get all violation
+GET http://localhost:3000/violation/getAllViolation

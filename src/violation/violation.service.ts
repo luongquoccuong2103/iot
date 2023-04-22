@@ -11,7 +11,7 @@ export class ViolationService {
   ) {}
 
   create(
-    name: string,
+    civilId: string,
     alcoholicLevel: number,
     transportationMean: number,
     fineAmount: number,
@@ -19,7 +19,7 @@ export class ViolationService {
     created: string,
   ) {
     const violation = this.repo.create({
-      name,
+      civilId,
       alcoholicLevel,
       transportationMean,
       fineAmount,
@@ -33,8 +33,8 @@ export class ViolationService {
     return this.repo.find();
   }
 
-  findOne(name: string) {
-    return this.repo.findOne({ where: { name: name } });
+  findOne(civilId: string) {
+    return this.repo.findOne({ where: { civilId: civilId } });
   }
 
   async update(id: number, attrs: Partial<ViolationEntity>) {

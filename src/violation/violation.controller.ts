@@ -17,7 +17,7 @@ export class ViolationController {
   @Post('/create')
   createUser(@Body() body: any) {
     this.violationService.create(
-      body.name,
+      body.civilId,
       body.alcoholicLevel,
       body.transportationMean,
       body.fineAmount,
@@ -26,12 +26,12 @@ export class ViolationController {
     );
   }
 
-  @Get('/:id')
-  findUser(@Param('name') name: string) {
-    return this.violationService.findOne(name);
+  @Post('/findOne')
+  findUser(@Body() civilId: string) {
+    return this.violationService.findOne(civilId);
   }
 
-  @Get()
+  @Get('/getAllViolation')
   findAllUsers() {
     return this.violationService.find();
   }
