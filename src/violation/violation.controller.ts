@@ -29,12 +29,12 @@ export class ViolationController {
       body.created,
     );
     const createdDate = new Date(body.created);
-    const dueDate = new Date(createdDate.getTime() + (15 * 24 * 60 * 60 * 1000));
+    const dueDate = new Date(createdDate.getTime() + 15 * 24 * 60 * 60 * 1000);
 
     await this.notificationService.createNotification(
       body.civilId,
       body.transportationMean,
-      dueDate.toISOString().split("T")[0],
+      dueDate.toISOString().split('T')[0],
     );
   }
 
