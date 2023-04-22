@@ -9,8 +9,8 @@ export class UserService {
     @InjectRepository(UserEntity) private repo: Repository<UserEntity>,
   ) {}
 
-  create(name: string, hometown: string, lastUpdated: string) {
-    const user = this.repo.create({ name, hometown, lastUpdated });
+  create(civilId: string, name: string, hometown: string, lastUpdated: string) {
+    const user = this.repo.create({ civilId, name, hometown, lastUpdated });
     return this.repo.save(user);
   }
 
@@ -18,8 +18,8 @@ export class UserService {
     return this.repo.find({ where: { name: name } });
   }
 
-  findOne(name: string) {
-    return this.repo.findOne({ where: { name: name } });
+  findOne(civilId: string) {
+    return this.repo.findOne({ where: { civilId: civilId } });
   }
 
   async update(id: number, attrs: Partial<UserEntity>) {

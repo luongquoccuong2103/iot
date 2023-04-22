@@ -9,20 +9,32 @@ import {
 } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { ViolationService } from './violation.service';
+import { NotificationService } from './notifications.service';
 
 @Controller('violation')
 export class ViolationController {
-  constructor(private violationService: ViolationService) {}
+  constructor(
+    private violationService: ViolationService,
+    private notificationService: NotificationService,
+  ) {}
 
   @Post('/create')
-  createUser(@Body() body: any) {
-    this.violationService.create(
+  async createViolation(@Body() body: any) {
+    await this.violationService.create(
       body.civilId,
       body.alcoholicLevel,
       body.transportationMean,
       body.fineAmount,
       body.status,
       body.created,
+    );
+    const createdDate = new Date(body.created);
+    const dueDate = new Date(createdDate.getTime() + (15 * 24 * 60 * 60 * 1000));
+
+    await this.notificationService.createNotification(
+      body.civilId,
+      body.transportationMean,
+      dueDate.toISOString().split("T")[0],
     );
   }
 
@@ -42,7 +54,7 @@ export class ViolationController {
   }
 
   @Patch('/:id')
-  updateUser(@Param('id') id: string, @Body() body: any) {
+  updateViolation(@Param('id') id: string, @Body() body: any) {
     return this.violationService.update(parseInt(id), body);
   }
 }

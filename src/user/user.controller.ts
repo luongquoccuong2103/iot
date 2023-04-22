@@ -16,12 +16,12 @@ export class UserController {
 
   @Post('/create')
   createUser(@Body() body: any) {
-    this.usersService.create(body.name, body.hometown, body.lastUpdated);
+    this.usersService.create(body.civilId, body.name, body.hometown, body.lastUpdated);
   }
 
   @Get('/:id')
-  findUser(@Param('name') name: string) {
-    return this.usersService.findOne(name);
+  findUser(@Param('id') id: string) {
+    return this.usersService.findOne(id);
   }
 
   @Get()
