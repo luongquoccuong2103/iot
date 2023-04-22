@@ -8,7 +8,7 @@ export class ViolationEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 12 })
   civilId: string;
 
   @Column({ default: AlcoholicLevelEnum.ZERO })

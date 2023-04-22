@@ -34,7 +34,7 @@ export class ViolationService {
   }
 
   findOne(civilId: string) {
-    return this.repo.findOne({ where: { civilId: civilId } });
+    return this.repo.findOne({ where: { civilId } });
   }
 
   async update(id: number, attrs: Partial<ViolationEntity>) {
