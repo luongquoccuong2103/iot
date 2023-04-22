@@ -3,7 +3,7 @@ POST http://localhost:3000/violation/create
 content-type: application/json
 
 {
-  "civilId": "123456789",
+  "civilId": "123123123",
   "alcoholicLevel": 21,
   "transportationMean": 2,
   "fineAmount": 100000,

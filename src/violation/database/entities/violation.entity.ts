@@ -14,7 +14,7 @@ export class ViolationEntity {
   @Column({ default: AlcoholicLevelEnum.ZERO })
   alcoholicLevel: number;
 
-  @Column({ default: TransportationEnum.UNDEFINED })
+  @Column({ default: TransportationEnum.PEDESTRIAN })
   transportationMean: number;
 
   @Column({ default: 0 })
